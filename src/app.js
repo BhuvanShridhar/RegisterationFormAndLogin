@@ -34,6 +34,9 @@ app.use("/", router);
 app.get("/register", (req, res) => {
   res.render("register");
 });
+app.get("/home", (req, res) => {
+  res.render("home");
+});
 // app.use(express.static("public"));
 
 // create a new user in our database
@@ -47,18 +50,46 @@ app.post("/register", async (req, res) => {
       const registerUser = new Register({
         name: req.body.name,
         number: req.body.number,
-        Email: req.body.Email,
+        email: req.body.email,
         password: req.body.password,
         cpassowrd: req.body.cpassowrd,
       });
+      // console.log(registerUser);
 
-      const registered = await registerUser.save();
+      await registerUser.save();
+
       res.status(201).render("register");
     } else {
       res.send("Password are not matching");
     }
   } catch (error) {
-    res.status(400).send(error);
+    res.status(400).send(error.message);
+  }
+});
+
+app.get("/login", (req, res) => {
+  res.render("register");
+});
+
+//login check
+app.post("/login", async (req, res) => {
+  try {
+    const email = req.body.email;
+    const password = req.body.password;
+    // console.log(`${email} and password is ${password}`);
+    // console.log(req.body);
+    const userEmail = await Register.findOne({ email: email });
+    // res.send(userEmail.password);
+    // console.log(userEmail.password);
+    // console.log(userEmail.password == password);
+    if (userEmail.password === password) {
+      // res.status(201).render("home");
+      res.redirect("home");
+    } else {
+      res.send("password are not matching");
+    }
+  } catch (error) {
+    res.status(400).send("Invalid mail");
   }
 });
 
