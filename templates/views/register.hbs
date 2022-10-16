@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>Registration Form</title>
+   <link rel="stylesheets" href="/public/css/style.css"
+  </head>
+  <style>
+    body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vh;
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(to top, #e44203, #04ac5df5);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+h1 {
+  position: absolute;
+  right: 14%;
+  top: 5%;
+  background-color: #fff;
+  padding: 10px 40px;
+}
+.main{
+  width: 350px;
+  height: 600px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 5px 20px 50px rgba(0,0,0,0.625);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+#chk{
+  display: none;
+  
+}
+.signup{
+  position: relative;
+  width: 50vh;
+  height: 70%;
+}
+label{
+  color: #fff;
+  font-size: 2.3em;
+  justify-content: center;
+  display: flex;
+  margin: 60px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+input{
+  width: 60%;
+  height: 20px;
+  background: #ebdeeb;
+  justify-content: center;
+  display: flex;
+  margin: 20px auto;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+button{
+  width: 60%;
+  height: 40px;
+  margin: 10px auto;
+  justify-content: center;
+  display: block;
+  color: #fff;
+  background: #573bBa;
+  font-size: 1em;
+  font-weight: bold;
+  margin-top: 20px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: 0.2s ease-in;
+  cursor: pointer;
+}
+button:hover{
+  background-color: #6d44b8;
+}
+.login{
+    height: 460px;
+    background: #ebdeeb;
+    border-radius: 60% / 10%;
+    transform: translate(-180px);
+    transition: 0.8s ease-in-out;
+}
+.login label{
+  color: #573bBa;
+  transform: scale(0.6);
+}
+#chk:checked ~ .login{
+  transform: scale(1);
+}
+#chk:checked~.signup label{
+  transform :scale(0.6);
+}
+.container{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+  </style>
+  <body>
+    <div class="container">
+
+    <h1 style="color: rgb(34,3,3);">Fill Form</h1>
+    <h1 style="color: rgb(65,211,7);"></h1>
+    <h1 style="color: rgb(255,0,200);"></h1>
+    <div class="main">
+      <input type="checkbox" id="chk" aria-hidden="true">
+        <div class="signup">
+          <form action="/register" method="post">
+          <label for="chk" aria-hidden="true">Sign up</label>
+          <input type="text" name="name" placeholder="User Name">
+          <input type="number" name="number" placeholder="phone NO">
+          <input type="email" name="Email" placeholder="Email">
+          <input type="password" name="password" placeholder="Password">
+          <input type="password" name="cpassowrd" placeholder="confrim password">
+          <button type="submit">sign Up</button>
+          </form>
+        </div>
+        <div class="login">
+          <form method="post" action="/login">
+            <label for="chk" aria-hidden="true">login</label>
+            <input type="email" name="email" placeholder="Email" required="">
+            <input type="password" name="password" placeholder="password" required="">
+          </form>
+        </div>
+    </div>
+    </div>
+
+  </body>
+</html>
+
+  
+     
